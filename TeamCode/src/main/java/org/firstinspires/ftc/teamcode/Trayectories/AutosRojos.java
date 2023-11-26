@@ -90,11 +90,11 @@ public class AutosRojos {
     }
     public Trajectory rojoIzq4(SampleMecanumDrive drive){
         return drive.trajectoryBuilder(new Pose2d(44, -26, Math.toRadians(0)),Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(46.3,-26, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(46.5,-26, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory rojoIzq5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(46.3, -26, Math.toRadians(-180)), Math.toRadians(-180))
+        return drive.trajectoryBuilder(new Pose2d(46.5, -26, Math.toRadians(-180)), Math.toRadians(-180))
                 .lineToLinearHeading(new Pose2d(43.6, -63.6, Math.toRadians(90)))
                 .build();
     }
