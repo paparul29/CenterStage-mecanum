@@ -26,6 +26,7 @@ public class PixelHolder extends SubsystemBase {
 
         pixel1Soltar();
         pixel2Hold();
+        elevator();
     }
 
     public void hold(){
