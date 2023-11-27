@@ -13,69 +13,79 @@ import java.util.logging.Handler;
 
 public class AutosRojos {
 
-    public Trajectory rojoMedio1(SampleMecanumDrive drive){
+    public Trajectory rojoMid1(SampleMecanumDrive drive){
         Pose2d firstPose = new Pose2d(6, -56.4, Math.toRadians(89));
 
         drive.setPoseEstimate(firstPose);
-        return drive.trajectoryBuilder(firstPose)
-                .splineToSplineHeading(new Pose2d(6, -36, Math.toRadians(84)), Math.toRadians(84))
+        return drive.trajectoryBuilder(new Pose2d(6, -56.4, Math.toRadians(89)), Math.toRadians(90))
+                .lineToLinearHeading(new Pose2d(6, -35, Math.toRadians(90)))
                 .build();
     }
-    public Trajectory rojoMedio2(SampleMecanumDrive drive){
-        return  drive.trajectoryBuilder(new Pose2d(6, -36, Math.toRadians(84)), Math.toRadians(84))
-                .splineToSplineHeading(new Pose2d(6, -39.2, Math.toRadians(90)), Math.toRadians(90))
+    public Trajectory rojoMid2(SampleMecanumDrive drive){
+        return drive.trajectoryBuilder((new Pose2d(6, -35, Math.toRadians(90))), Math.toRadians(90))
+                .lineToLinearHeading(new Pose2d(6, -47, Math.toRadians(90)))
                 .build();
     }
-    public Trajectory rojoMedio3(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder(new Pose2d(6, -39.2, Math.toRadians(90)), Math.toRadians(90))
-                .splineToSplineHeading(new Pose2d(42, -29, Math.toRadians(0)), Math.toRadians(0))
+    public Trajectory rojoMid3(SampleMecanumDrive drive){
+        return drive.trajectoryBuilder((new Pose2d(6, -47, Math.toRadians(90))), Math.toRadians(90))
+                .splineToSplineHeading(new Pose2d(42, -26.5, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
-    public Trajectory rojoMedio4(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder(new Pose2d(42,-29, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(47,-29, Math.toRadians(0)), Math.toRadians(0))
+    public Trajectory rojoMid4(SampleMecanumDrive drive){
+        return drive.trajectoryBuilder(new Pose2d(42, -26.5, Math.toRadians(0)),Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(46.5,-26.5, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
-    public Trajectory rojoMedio5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(47, -29, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(43.6, -63.6, Math.toRadians(90)), Math.toRadians(90))
+    public Trajectory rojoMid5(SampleMecanumDrive drive) {
+        return drive.trajectoryBuilder(new Pose2d(46.5, -26.5, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(35,-26.5))
                 .build();
     }
+    public Trajectory rojoMid6(SampleMecanumDrive drive) {
+        return drive.trajectoryBuilder(new Pose2d(35, -26.5, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(47, -55))
+                .build();
+    }
+
+
 
     public Trajectory rojoDer1(SampleMecanumDrive drive){
         Pose2d firstPose = new Pose2d(6, -56.4, Math.toRadians(89));
 
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(new Pose2d(6, -56.4, Math.toRadians(89)), Math.toRadians(90))
-                .splineToSplineHeading(new Pose2d(10,-38.4, Math.toRadians(40)), Math.toRadians(40))
+                .lineToLinearHeading(new Pose2d(6, -36.4, Math.toRadians(40)))
                 .build();
     }
     public Trajectory rojoDer2(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder(new Pose2d(10, -38.4, Math.toRadians(40)), Math.toRadians(40))
-                .splineToSplineHeading(new Pose2d(6,-38.4, Math.toRadians(40)), Math.toRadians(40))
+        return drive.trajectoryBuilder((new Pose2d(6, -36.4, Math.toRadians(40))), Math.toRadians(40))
+                .lineToLinearHeading(new Pose2d(7, -60, Math.toRadians(90)))
                 .build();
     }
     public Trajectory rojoDer3(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder(new Pose2d(6, -38.4, Math.toRadians(40)), Math.toRadians(40))
-                .splineToSplineHeading(new Pose2d(39,-38, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder((new Pose2d(7, -60, Math.toRadians(90))), Math.toRadians(90))
+                .splineToSplineHeading(new Pose2d(42, -37, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory rojoDer4(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder(new Pose2d(39,-38, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(43,-33, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(42, -37, Math.toRadians(0)),Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(47,-37, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory rojoDer5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(43, -33, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(43.6, -63.6, Math.toRadians(90)), Math.toRadians(90))
+        return drive.trajectoryBuilder(new Pose2d(47, -37, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(35,-35))
                 .build();
     }
-//Trajectory traj = mysteryRobot.drive.trajectoryBuilder(new Pose2d(6,-57.6, Math.toRadians(90)), Math.toRadians(90))
-// .splineToSplineHeading(new Pose2d(13.2,-34, Math.toRadians(51)), Math.toRadians(51))
-// .splineToSplineHeading(new Pose2d(12.8,-51.2, Math.toRadians(91)), Math.toRadians(91))
-// .splineToSplineHeading(new Pose2d(45.6,-42, Math.toRadians(-1)), Math.toRadians(-1))
-// .splineToSplineHeading(new Pose2d(34.8,-40.4, Math.toRadians(0)), Math.toRadians(0))
-// .splineToSplineHeading(new Pose2d(40,-62.4, Math.toRadians(92)), Math.toRadians(92))
+    public Trajectory rojoDer6(SampleMecanumDrive drive) {
+        return drive.trajectoryBuilder(new Pose2d(35, -35, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(47, -63))
+                .build();
+    }
+
+
+
+
 
     public Trajectory rojoIzq1(SampleMecanumDrive drive){
         Pose2d firstPose = new Pose2d(6, -56.4, Math.toRadians(89));
@@ -92,21 +102,21 @@ public class AutosRojos {
     }
     public Trajectory rojoIzq3(SampleMecanumDrive drive){
         return drive.trajectoryBuilder((new Pose2d(7, -48, Math.toRadians(89))), Math.toRadians(89))
-                .splineToSplineHeading(new Pose2d(42, -22.7, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(42, -20, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory rojoIzq4(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder(new Pose2d(44, -22.7, Math.toRadians(0)),Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(46.5,-22.7, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(44, -20, Math.toRadians(0)),Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(46.5,-20, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory rojoIzq5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(46.5, -22.7, Math.toRadians(0)), Math.toRadians(0))
-                .lineTo(new Vector2d(35,-22.7))
+        return drive.trajectoryBuilder(new Pose2d(46.5, -20, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(35,-20))
                 .build();
     }
     public Trajectory rojoIzq6(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(35, -22.7, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(35, -20, Math.toRadians(0)), Math.toRadians(0))
                 .lineTo(new Vector2d(47, -55))
                 .build();
     }

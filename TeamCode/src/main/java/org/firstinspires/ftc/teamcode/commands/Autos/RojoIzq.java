@@ -21,7 +21,7 @@ public class RojoIzq extends SequentialCommandGroup {
 
          addCommands(
                  new TrajectoryFollowerCommand(drive, autosRojos.rojoIzq1(drive.getDrive())),
-                 new IntakeCommand(intake,-.2),
+                 new IntakeCommand(intake,-.3),
                  new TrajectoryFollowerCommand(drive, autosRojos.rojoIzq2(drive.getDrive())),
                  new TrajectoryFollowerCommand(drive, autosRojos.rojoIzq3(drive.getDrive())),
                  new InstantCommand(pixelHolder::elevator),

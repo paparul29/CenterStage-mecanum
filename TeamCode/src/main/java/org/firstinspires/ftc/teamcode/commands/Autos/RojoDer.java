@@ -25,7 +25,7 @@ public class RojoDer extends SequentialCommandGroup {
                 new InstantCommand(pixelHolder::elevator),
                 new WaitCommand(500),
                 new ElevadorGoToPosition(elevator,1300),
-                new WaitCommand(500),
+                new WaitCommand(600),
                 new InstantCommand(pixelHolder::leave),
                 new WaitCommand(500),
                 new TrajectoryFollowerCommand(drive,autosRojos.rojoDer4(drive.getDrive())),
@@ -35,7 +35,8 @@ public class RojoDer extends SequentialCommandGroup {
                 new TrajectoryFollowerCommand(drive, autosRojos.rojoDer5(drive.getDrive())),
                 new InstantCommand(pixelHolder::elevator),
                 new WaitCommand(500),
-                new ElevadorGoToPosition(elevator,0)
+                new ElevadorGoToPosition(elevator,0),
+                new TrajectoryFollowerCommand(drive, autosRojos.rojoDer6(drive.getDrive()))
         );
     }
 }
