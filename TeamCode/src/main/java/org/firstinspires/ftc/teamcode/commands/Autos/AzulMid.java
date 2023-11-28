@@ -26,17 +26,18 @@ public class AzulMid extends SequentialCommandGroup {
                 new InstantCommand(pixelHolder::elevator),
                 new WaitCommand(500),
                 new ElevadorGoToPosition(elevator,1300),
-                new WaitCommand(500),
+                new WaitCommand(600),
                 new InstantCommand(pixelHolder::leave),
-                new WaitCommand(300),
+                new WaitCommand(500),
                 new TrajectoryFollowerCommand(drive,autosAzules.azulMedio4(drive.getDrive())),
                 new WaitCommand(500),
                 new InstantCommand(pixelHolder::pixel2Soltar),
-                new WaitCommand(500),
+                new WaitCommand(700),
                 new TrajectoryFollowerCommand(drive,autosAzules.azulMedio5(drive.getDrive())),
                 new InstantCommand(pixelHolder::elevator),
-                new WaitCommand(200),
-                new ElevadorGoToPosition(elevator,0)
+                new WaitCommand(500),
+                new ElevadorGoToPosition(elevator,0),
+                new TrajectoryFollowerCommand(drive,autosAzules.azulMedio6(drive.getDrive()))
         );
     }
 }

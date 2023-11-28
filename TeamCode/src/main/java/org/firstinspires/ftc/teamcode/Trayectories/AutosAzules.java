@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Trayectories;
 
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
@@ -13,33 +14,39 @@ public class AutosAzules {
 
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(firstPose)
-                .splineToSplineHeading(new Pose2d(6.8, 26, Math.toRadians(-90)), Math.toRadians(-90))
+                .lineToLinearHeading(new Pose2d(6, 25, Math.toRadians(-90)))
                 .build();
     }
 
     public Trajectory azulMedio2(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(6.8, 26, Math.toRadians(-90)), Math.toRadians(-90))
-                .back(7)
+        return drive.trajectoryBuilder(new Pose2d(6, 26, Math.toRadians(-90)), Math.toRadians(-90))
+                .back(20)
                 .build();
     }
 
     public Trajectory azulMedio3(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(6.8, 19, Math.toRadians(-90)), Math.toRadians(-90))
-                .splineToSplineHeading(new Pose2d(42, 26, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(6, 46, Math.toRadians(-90)), Math.toRadians(-90))
+                .splineToSplineHeading(new Pose2d(42, 25, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
 
     public Trajectory azulMedio4(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(42, 26, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(47, 26, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(42, 25, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(47, 25, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory azulMedio5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(47, 26, Math.toRadians(0)), Math.toRadians(0))
-                .lineToLinearHeading(new Pose2d(43.2, 59.2, Math.toRadians(-90)))
+        return drive.trajectoryBuilder(new Pose2d(47, 25, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(35,25))
                 .build();
-        //43.2 59.2
     }
+    public Trajectory azulMedio6(SampleMecanumDrive drive) {
+        return drive.trajectoryBuilder(new Pose2d(35, 26, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(43, 55))
+                .build();
+    }
+
+
 
 
     public Trajectory azulDer1(SampleMecanumDrive drive) {
@@ -108,8 +115,3 @@ public class AutosAzules {
 
     }
 }
-//Trajectory traj = mysteryRobot.drive.trajectoryBuilder(new Pose2d(6.8,51.2, Math.toRadians(-90)), Math.toRadians(-90))
-// .splineToSplineHeading(new Pose2d(6.4,20.4, Math.toRadians(-90)), Math.toRadians(-90))
-// .splineToSplineHeading(new Pose2d(46,34, Math.toRadians(0)), Math.toRadians(0))
-// .splineToSplineHeading(new Pose2d(43.2,59.2, Math.toRadians(-90)), Math.toRadians(-90))
-

@@ -61,7 +61,7 @@ public class MecanumDriveSubsystem extends SubsystemBase {
         Pose2d poseEstimate = getPoseEstimate();
 
         Vector2d input = new Vector2d(-leftY, -leftX).rotated(
-                fieldCentric ? -poseEstimate.getHeading() + 90 : 0
+                fieldCentric ? -poseEstimate.getHeading() + 1.570795: 0
         );
 
         drive.setWeightedDrivePower(

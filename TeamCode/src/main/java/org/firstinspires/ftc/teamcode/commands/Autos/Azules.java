@@ -29,8 +29,8 @@ public class Azules extends CommandOpMode {
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
         elevator = new Elevator(telemetry, hardwareMap);
         azulMid = new AzulMid(drive, elevator,intake,pixelHolder);
-        azulIzq = new AzulIzq(drive,elevator,intake,pixelHolder);
-        azulDer = new AzulDer(drive,elevator,intake,pixelHolder);
+        //azulIzq = new AzulIzq(drive,elevator,intake,pixelHolder);
+        //azulDer = new AzulDer(drive,elevator,intake,pixelHolder);
 
         schedule(azulMid);
     }

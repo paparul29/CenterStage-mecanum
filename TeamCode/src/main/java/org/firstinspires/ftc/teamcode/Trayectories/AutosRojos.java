@@ -59,11 +59,11 @@ public class AutosRojos {
     }
     public Trajectory rojoDer2(SampleMecanumDrive drive){
         return drive.trajectoryBuilder((new Pose2d(6, -36.4, Math.toRadians(40))), Math.toRadians(40))
-                .lineToLinearHeading(new Pose2d(8, -57, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(10, -57, Math.toRadians(90)))
                 .build();
     }
     public Trajectory rojoDer3(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder((new Pose2d(8, -57, Math.toRadians(90))), Math.toRadians(90))
+        return drive.trajectoryBuilder((new Pose2d(10, -57, Math.toRadians(90))), Math.toRadians(90))
                 .splineToSplineHeading(new Pose2d(42, -39, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
@@ -117,7 +117,7 @@ public class AutosRojos {
     }
     public Trajectory rojoIzq6(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder(new Pose2d(35, -20, Math.toRadians(0)), Math.toRadians(0))
-                .lineTo(new Vector2d(47, -58))
+                .lineTo(new Vector2d(47, -60))
                 .build();
     }
 
