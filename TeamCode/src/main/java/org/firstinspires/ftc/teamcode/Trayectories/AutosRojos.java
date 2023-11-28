@@ -97,27 +97,27 @@ public class AutosRojos {
     }
     public Trajectory rojoIzq2(SampleMecanumDrive drive){
         return drive.trajectoryBuilder((new Pose2d(6, -36.4, Math.toRadians(120))), Math.toRadians(120))
-                .lineToLinearHeading(new Pose2d(7, -48, Math.toRadians(89)))
+                .lineToLinearHeading(new Pose2d(7, -52, Math.toRadians(89)))
                 .build();
     }
     public Trajectory rojoIzq3(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder((new Pose2d(7, -48, Math.toRadians(89))), Math.toRadians(89))
-                .splineToSplineHeading(new Pose2d(42, -20, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder((new Pose2d(7, -52, Math.toRadians(89))), Math.toRadians(89))
+                .splineToSplineHeading(new Pose2d(42, -25, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory rojoIzq4(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder(new Pose2d(44, -20, Math.toRadians(0)),Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(46.5,-20, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(42, -25, Math.toRadians(0)),Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(46.5,-25, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory rojoIzq5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(46.5, -20, Math.toRadians(0)), Math.toRadians(0))
-                .lineTo(new Vector2d(35,-20))
+        return drive.trajectoryBuilder(new Pose2d(46.5, -25, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(35,-25))
                 .build();
     }
     public Trajectory rojoIzq6(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder(new Pose2d(35, -20, Math.toRadians(0)), Math.toRadians(0))
-                .lineTo(new Vector2d(47, -55))
+                .lineTo(new Vector2d(47, -58))
                 .build();
     }
 
