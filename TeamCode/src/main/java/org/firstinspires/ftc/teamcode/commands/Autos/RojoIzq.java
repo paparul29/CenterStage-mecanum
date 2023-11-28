@@ -13,12 +13,19 @@ import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
 
+import java.util.function.BooleanSupplier;
+
 public class RojoIzq extends SequentialCommandGroup {
      AutosRojos autosRojos = new AutosRojos();
 
 
      public RojoIzq(MecanumDriveSubsystem drive, Elevator elevator, Intake intake, PixelHolder pixelHolder){
-
+         BooleanSupplier sup = new BooleanSupplier() {
+             @Override
+             public boolean getAsBoolean() {
+                 return RojoIzq.super.isScheduled();
+             }
+         };
          addCommands(
                  new TrajectoryFollowerCommand(drive, autosRojos.rojoIzq1(drive.getDrive())),
                  new IntakeCommand(intake,-.3),

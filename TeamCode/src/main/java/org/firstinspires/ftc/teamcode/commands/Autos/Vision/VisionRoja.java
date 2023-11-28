@@ -2,10 +2,20 @@ package org.firstinspires.ftc.teamcode.commands.Autos.Vision;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.arcrobotics.ftclib.command.CommandOpMode;
+import com.arcrobotics.ftclib.command.CommandScheduler;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.commands.Autos.RojoDer;
+import org.firstinspires.ftc.teamcode.commands.Autos.RojoIzq;
+import org.firstinspires.ftc.teamcode.commands.Autos.RojoMid;
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.subsystems.Elevator;
+import org.firstinspires.ftc.teamcode.subsystems.Intake;
+import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.Moments;
@@ -18,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Autonomous
-public class VisionRoja extends LinearOpMode {
+public class VisionRoja extends CommandOpMode {
 
     double cX = 0;
     double cY = 0;
@@ -31,15 +41,23 @@ public class VisionRoja extends LinearOpMode {
     // Calculate the distance using the formula
     public static final double objectWidthInRealWorldUnits = 3.75;  // Replace with the actual width of the object in real-world units
     public static final double focalLength = 728;  // Replace with the focal length of the camera in pixels
-
+    Intake intake;
+    Elevator elevator;
+    PixelHolder pixelHolder;
+    SampleMecanumDrive sampleMecanumDrive;
+    MecanumDriveSubsystem drive;
 
     @Override
-    public void runOpMode() {
-
+    public void initialize() {
         initOpenCV();
         FtcDashboard dashboard = FtcDashboard.getInstance();
         telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
         FtcDashboard.getInstance().startCameraStream(controlHubCam, 30);
+        sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
+        drive = new MecanumDriveSubsystem(sampleMecanumDrive, false);
+        intake = new Intake(telemetry, hardwareMap);
+        elevator = new Elevator(telemetry, hardwareMap);
+        pixelHolder = new PixelHolder(hardwareMap, telemetry);
 
 
         waitForStart();
@@ -48,6 +66,17 @@ public class VisionRoja extends LinearOpMode {
             telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
             telemetry.addData("Distance in Inch", (getDistance(width)));
             telemetry.update();
+
+            if(cX < 200) {
+                telemetry.addLine("Lado Izquierdo");
+                CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
+            }else if(cX > 200 && cX < 500) {
+                telemetry.addLine("En medio");
+                CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
+            }else {
+                telemetry.addLine("A la derecha");
+                CommandScheduler.getInstance().schedule(new RojoDer(drive, elevator, intake, pixelHolder));
+            }
 
         }
 

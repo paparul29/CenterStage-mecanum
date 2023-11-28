@@ -33,11 +33,11 @@ public class TeleOpMode extends CommandOpMode {
         GamepadEx gamepadDriver = new GamepadEx(gamepad1);
         GamepadEx gamepadC = new GamepadEx(gamepad2);
 
-        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.RIGHT_BUMPER)
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.LEFT_BUMPER)
                 .whileHeld(() -> intake.setPower(1))
                 .whenReleased(() -> intake.setPower(0));
 
-        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.LEFT_BUMPER)
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.RIGHT_BUMPER)
                 .whileHeld(() -> intake.setPower(-1))
                 .whenReleased(() -> intake.setPower(0));
 

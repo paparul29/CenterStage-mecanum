@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Autonomous
-public class VisionAzul extends CommandOpMode {
+public class    VisionAzul extends CommandOpMode {
 
     double cX = 0;
     double cY = 0;
@@ -34,10 +34,8 @@ public class VisionAzul extends CommandOpMode {
     public static final double objectWidthInRealWorldUnits = 3.75;  // Replace with the actual width of the object in real-world units
     public static final double focalLength = 728;  // Replace with the focal length of the camera in pixels
 
-
     @Override
-    public void runOpMode() {
-
+    public void initialize() {
         initOpenCV();
         FtcDashboard dashboard = FtcDashboard.getInstance();
         telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
@@ -62,11 +60,6 @@ public class VisionAzul extends CommandOpMode {
         }
 
         controlHubCam.stopStreaming();
-    }
-
-    @Override
-    public void initialize() {
-
     }
 
     private void initOpenCV() {
