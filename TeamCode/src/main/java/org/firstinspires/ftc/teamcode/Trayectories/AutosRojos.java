@@ -18,16 +18,16 @@ public class AutosRojos {
 
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(new Pose2d(6, -58, Math.toRadians(89)), Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(6, -35, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(6, -34, Math.toRadians(90)))
                 .build();
     }
     public Trajectory rojoMid2(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder((new Pose2d(6, -35, Math.toRadians(90))), Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(6, -47, Math.toRadians(90)))
+        return drive.trajectoryBuilder((new Pose2d(6, -34, Math.toRadians(90))), Math.toRadians(90))
+                .lineToLinearHeading(new Pose2d(6, -49, Math.toRadians(90)))
                 .build();
     }
     public Trajectory rojoMid3(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder((new Pose2d(6, -47, Math.toRadians(90))), Math.toRadians(90))
+        return drive.trajectoryBuilder((new Pose2d(6, -49, Math.toRadians(90))), Math.toRadians(90))
                 .splineToSplineHeading(new Pose2d(42, -30.5, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
@@ -88,15 +88,15 @@ public class AutosRojos {
 
 
     public Trajectory rojoIzq1(SampleMecanumDrive drive){
-        Pose2d firstPose = new Pose2d(6, -56.4, Math.toRadians(89));
+        Pose2d firstPose = new Pose2d(7, -56.4, Math.toRadians(89));
 
         drive.setPoseEstimate(firstPose);
-        return drive.trajectoryBuilder(new Pose2d(6, -56.4, Math.toRadians(89)), Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(6, -36.4, Math.toRadians(120)))
+        return drive.trajectoryBuilder(new Pose2d(7, -56.4, Math.toRadians(89)), Math.toRadians(90))
+                .lineToLinearHeading(new Pose2d(5, -36.4, Math.toRadians(123)))
                 .build();
     }
     public Trajectory rojoIzq2(SampleMecanumDrive drive){
-        return drive.trajectoryBuilder((new Pose2d(6, -36.4, Math.toRadians(120))), Math.toRadians(120))
+        return drive.trajectoryBuilder((new Pose2d(6, -36.4, Math.toRadians(123))), Math.toRadians(123))
                 .lineToLinearHeading(new Pose2d(7, -52, Math.toRadians(89)))
                 .build();
     }
