@@ -13,11 +13,19 @@ import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
 
+import java.util.function.BooleanSupplier;
+
 public class AzulMid extends SequentialCommandGroup {
 
     AutosAzules autosAzules = new AutosAzules();
 
     public AzulMid(MecanumDriveSubsystem drive, Elevator elevator, Intake intake, PixelHolder pixelHolder) {
+        BooleanSupplier sup = new BooleanSupplier() {
+            @Override
+            public boolean getAsBoolean() {
+                return AzulMid.super.isScheduled();
+            }
+        };
         addCommands(
                 new TrajectoryFollowerCommand(drive, autosAzules.azulMedio1(drive.getDrive())),
                 new IntakeCommand(intake,-.3),

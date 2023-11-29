@@ -19,12 +19,12 @@ import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
 
 @TeleOp
-public class TeleOpMode extends CommandOpMode {
+public class TeleOpFCAzul extends CommandOpMode {
 
     @Override
     public void initialize() {
         SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
-        MecanumDriveSubsystem driveSystem = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
+        MecanumDriveSubsystem driveSystem = new MecanumDriveSubsystem(sampleMecanumDrive, true, true);
         Intake intake = new Intake(telemetry, hardwareMap);
         Elevator elevator = new Elevator(telemetry, hardwareMap);
         PixelHolder pixelHolder = new PixelHolder(hardwareMap, telemetry);
@@ -59,6 +59,9 @@ public class TeleOpMode extends CommandOpMode {
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.Y)
                 .whenPressed(() -> elevator.setPosition(1, 3500));
+
+        new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.RIGHT_BUMPER)
+                .whenPressed(()-> elevator.setPosition(1,2700));
 
         elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder));
 

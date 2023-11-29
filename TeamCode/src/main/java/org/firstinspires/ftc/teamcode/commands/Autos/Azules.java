@@ -25,7 +25,7 @@ public class Azules extends CommandOpMode {
     public void initialize() {
         intake = new Intake(telemetry, hardwareMap);
         sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
-        drive = new MecanumDriveSubsystem(sampleMecanumDrive, false);
+        drive = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
         elevator = new Elevator(telemetry, hardwareMap);
         //azulMid = new AzulMid(drive, elevator,intake,pixelHolder);

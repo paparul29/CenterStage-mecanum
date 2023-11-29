@@ -54,7 +54,7 @@ public class VisionRoja extends CommandOpMode {
         telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
         FtcDashboard.getInstance().startCameraStream(controlHubCam, 30);
         sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
-        drive = new MecanumDriveSubsystem(sampleMecanumDrive, false);
+        drive = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
         intake = new Intake(telemetry, hardwareMap);
         elevator = new Elevator(telemetry, hardwareMap);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);

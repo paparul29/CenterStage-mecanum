@@ -13,11 +13,19 @@ import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
 
+import java.util.function.BooleanSupplier;
+
 public class AzulDer extends SequentialCommandGroup {
 
     AutosAzules autosAzules = new AutosAzules();
 
     public AzulDer(MecanumDriveSubsystem drive, Elevator elevator, Intake intake, PixelHolder pixelHolder) {
+        BooleanSupplier sup = new BooleanSupplier() {
+            @Override
+            public boolean getAsBoolean() {
+                return AzulDer.super.isScheduled();
+            }
+        };
         addCommands(
                 new TrajectoryFollowerCommand(drive, autosAzules.azulDer1(drive.getDrive())),
                 new IntakeCommand(intake,-.3),

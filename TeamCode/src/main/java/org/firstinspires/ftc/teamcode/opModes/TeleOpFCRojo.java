@@ -1,13 +1,11 @@
 package org.firstinspires.ftc.teamcode.opModes;
 
-
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.InstantCommand;
 import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.GamepadButton;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.commands.ElevadorDefault;
 import org.firstinspires.ftc.teamcode.commands.MecanumDriveCommand;
@@ -18,18 +16,17 @@ import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
 
-@TeleOp
-public class TeleOpModeFieldCentric extends CommandOpMode {
+public class TeleOpFCRojo extends CommandOpMode {
 
     @Override
     public void initialize() {
         SampleMecanumDrive sampleMecanumDrive = new SampleMecanumDrive(hardwareMap);
-        MecanumDriveSubsystem driveSystem = new MecanumDriveSubsystem(sampleMecanumDrive, true);
+        MecanumDriveSubsystem driveSystem = new MecanumDriveSubsystem(sampleMecanumDrive, true, false);
         Intake intake = new Intake(telemetry, hardwareMap);
         Elevator elevator = new Elevator(telemetry, hardwareMap);
         PixelHolder pixelHolder = new PixelHolder(hardwareMap, telemetry);
         Escalador escalador = new Escalador(hardwareMap, telemetry);
-        
+
         GamepadEx gamepadDriver = new GamepadEx(gamepad1);
         GamepadEx gamepadC = new GamepadEx(gamepad2);
 
