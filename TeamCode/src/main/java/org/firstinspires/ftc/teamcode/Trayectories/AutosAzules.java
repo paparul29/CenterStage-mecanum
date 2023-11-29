@@ -87,36 +87,42 @@ public class AutosAzules {
     }
 
 
+
     public Trajectory azulIzq1(SampleMecanumDrive drive) {
         Pose2d firstPose = new Pose2d(6, 50.4, Math.toRadians(-90));
+
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(firstPose)
-                .splineToSplineHeading(new Pose2d(15.2, 29.2, Math.toRadians(-86)), Math.toRadians(-86))
+                .lineToLinearHeading(new Pose2d(7, 30, Math.toRadians(-40)))
                 .build();
     }
 
     public Trajectory azulIzq2(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(15.2, 29.2, Math.toRadians(-86)), Math.toRadians(-86))
-                .splineToSplineHeading(new Pose2d(15.6, 43.2, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(7, 30, Math.toRadians(-40)), Math.toRadians(-40))
+                .lineToLinearHeading(new Pose2d(30, 50, Math.toRadians(-90)))
+                //.back(15)
                 .build();
     }
 
     public Trajectory azulIzq3(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(15.6, 43.2, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(42, 34.8, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(30, 50, Math.toRadians(-90)), Math.toRadians(-90))
+                .splineToSplineHeading(new Pose2d(42, 30, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
 
     public Trajectory azulIzq4(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(42, 34.8, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(46, 34.8, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(42, 30, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(47, 30, Math.toRadians(0)), Math.toRadians(0))
                 .build();
-
     }
     public Trajectory azulIzq5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(46, 34.8, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(43.2,59.2, Math.toRadians(-90)), Math.toRadians(-90))
+        return drive.trajectoryBuilder(new Pose2d(47, 30, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(35,27))
                 .build();
-
+    }
+    public Trajectory azulIzq6(SampleMecanumDrive drive) {
+        return drive.trajectoryBuilder(new Pose2d(35, 22, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(43, 55))
+                .build();
     }
 }
