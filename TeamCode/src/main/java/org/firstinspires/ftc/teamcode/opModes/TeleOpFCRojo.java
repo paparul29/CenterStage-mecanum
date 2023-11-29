@@ -6,6 +6,7 @@ import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.GamepadButton;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.commands.ElevadorDefault;
 import org.firstinspires.ftc.teamcode.commands.MecanumDriveCommand;
@@ -15,7 +16,7 @@ import org.firstinspires.ftc.teamcode.subsystems.Escalador;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
-
+@TeleOp
 public class TeleOpFCRojo extends CommandOpMode {
 
     @Override
