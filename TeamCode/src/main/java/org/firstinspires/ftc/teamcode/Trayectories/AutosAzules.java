@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 public class AutosAzules {
 
+    //CORTOS
     public Trajectory azulMedio1(SampleMecanumDrive drive) {
         Pose2d firstPose = new Pose2d(6, 50.4, Math.toRadians(-90));
 
@@ -26,18 +27,18 @@ public class AutosAzules {
 
     public Trajectory azulMedio3(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder(new Pose2d(6, 46, Math.toRadians(-90)), Math.toRadians(-90))
-                .splineToSplineHeading(new Pose2d(42, 25, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(42, 26, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
 
     public Trajectory azulMedio4(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(42, 25, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(47, 25, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(42, 26, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(47, 26, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory azulMedio5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(47, 25, Math.toRadians(0)), Math.toRadians(0))
-                .lineTo(new Vector2d(35,25))
+        return drive.trajectoryBuilder(new Pose2d(47, 26, Math.toRadians(0)), Math.toRadians(0))
+                .lineTo(new Vector2d(35,26))
                 .build();
     }
     public Trajectory azulMedio6(SampleMecanumDrive drive) {
@@ -72,11 +73,11 @@ public class AutosAzules {
 
     public Trajectory azulDer4(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder(new Pose2d(42, 19, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(49, 19, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(50.3, 19, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
     public Trajectory azulDer5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(49, 19, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(50.3, 20, Math.toRadians(0)), Math.toRadians(0))
                 .lineTo(new Vector2d(35,24))
                 .build();
     }

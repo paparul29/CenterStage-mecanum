@@ -19,6 +19,7 @@ public class Rojos extends CommandOpMode {
     RojoIzq rojoIzq;
     RojoDer rojoDer;
     RojoMid rojoMid;
+    RojoMidLRG rojoMidLRG;
 
     @Override
     public void initialize() {
@@ -27,10 +28,11 @@ public class Rojos extends CommandOpMode {
         drive = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
         elevator = new Elevator(telemetry, hardwareMap);
-        rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
+        //rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
         //rojoDer = new RojoDer(drive,elevator,intake,pixelHolder);
         //rojoMid = new RojoMid(drive,elevator,intake,pixelHolder);
-        schedule(rojoIzq);
+        rojoMidLRG = new RojoMidLRG(drive,elevator, intake, pixelHolder);
+        schedule(rojoMidLRG);
 
     }
 }
