@@ -59,6 +59,7 @@ public class VisionAzulCortos extends CommandOpMode {
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
 
 
+        waitForStart();
         sleep(1000);
         telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
         telemetry.addData("Distance in Inch", (getDistance(width)));

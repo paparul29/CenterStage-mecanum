@@ -28,11 +28,11 @@ public class Rojos extends CommandOpMode {
         drive = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
         elevator = new Elevator(telemetry, hardwareMap);
-        //rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
+        rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
         //rojoDer = new RojoDer(drive,elevator,intake,pixelHolder);
         //rojoMid = new RojoMid(drive,elevator,intake,pixelHolder);
-        rojoMidLRG = new RojoMidLRG(drive,elevator, intake, pixelHolder);
-        schedule(rojoMidLRG);
+        //rojoMidLRG = new RojoMidLRG(drive,elevator, intake, pixelHolder);
+        schedule(rojoIzq);
 
     }
 }
