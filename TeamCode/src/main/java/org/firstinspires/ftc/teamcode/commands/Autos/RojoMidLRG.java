@@ -18,7 +18,7 @@ import java.util.function.BooleanSupplier;
 
 public class RojoMidLRG extends SequentialCommandGroup {
     AutosRojos autosRojos = new AutosRojos();
-
+/*
     public RojoMidLRG(MecanumDriveSubsystem drive, Elevator elevator, Intake intake, PixelHolder pixelHolder) {
         BooleanSupplier sup = new BooleanSupplier() {
             @Override
@@ -48,4 +48,6 @@ public class RojoMidLRG extends SequentialCommandGroup {
                 new TrajectoryFollowerCommand(drive,autosRojos.rojoMid6LGR(drive.getDrive()))
         );
     }
+
+ */
 }
