@@ -32,7 +32,7 @@ public class TeleOpFCRojo extends CommandOpMode {
         GamepadEx gamepadC = new GamepadEx(gamepad2);
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.LEFT_BUMPER)
-                .whileHeld(() -> intake.setPower(1))
+                .whileHeld(() -> intake.setPower(.5))
                 .whenReleased(() -> intake.setPower(0));
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.RIGHT_BUMPER)
