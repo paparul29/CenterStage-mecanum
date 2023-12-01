@@ -58,30 +58,32 @@ public class VisionRojaCortos extends CommandOpMode {
         intake = new Intake(telemetry, hardwareMap);
         elevator = new Elevator(telemetry, hardwareMap);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
-        if(cX > 350 && cY > 200) {
-            telemetry.addData("Posicion", "A la derecha");
-        }else if(cX > 0 && cX < 350 && cY > 200) {
-            telemetry.addData("Posicion","En medio");
-        }else {
-            telemetry.addData("Posicion","Lado Izquierdo");
-            ;
-        }
 
-        waitForStart();
         sleep(1000);
 
-        telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
-        telemetry.addData("Distance in Inch", (getDistance(width)));
-        telemetry.update();
-
-            if(cX > 350 && cY > 200) {
+        while(!isStarted()) {
+            telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
+            if (cX > 350 && cY > 200 && width >50) {
                 telemetry.addData("Posicion", "A la derecha");
+            } else if (cX > 0 && cX < 350 && cY > 200 && width > 50) {
+                telemetry.addData("Posicion", "En medio");
+                CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
+            } else{
+                telemetry.addData("Posicion", "Lado Izquierdo");
+                CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
+                ;
+            }
+            telemetry.update();
+        }
+        telemetry.update();
+        waitForStart();
+
+
+        if(cX > 350 && cY > 200) {
                 CommandScheduler.getInstance().schedule(new RojoDer(drive, elevator, intake, pixelHolder));
             }else if(cX > 0 && cX < 350 && cY > 200) {
-                telemetry.addData("Posicion","En medio");
                 CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
             }else {
-                telemetry.addData("Posicion","Lado Izquierdo");
                 CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
                 ;
             }

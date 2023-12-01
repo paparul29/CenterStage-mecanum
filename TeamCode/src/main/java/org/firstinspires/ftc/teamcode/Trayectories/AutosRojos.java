@@ -59,12 +59,12 @@ public class AutosRojos {
 
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(new Pose2d(6, -56.4, Math.toRadians(89)), Math.toRadians(90))
-                .lineToLinearHeading(new Pose2d(6, -42, Math.toRadians(40)))
+                .lineToLinearHeading(new Pose2d(6, -35, Math.toRadians(40)))
                 .build();
     }
 
     public Trajectory rojoDer2(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(6, -42, Math.toRadians(40))), Math.toRadians(40))
+        return drive.trajectoryBuilder((new Pose2d(6, -35, Math.toRadians(40))), Math.toRadians(40))
                 .lineToLinearHeading(new Pose2d(30, -60, Math.toRadians(90)))
                 .build();
     }

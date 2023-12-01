@@ -97,12 +97,19 @@ public class AutosRojosPoderosos {
 
     public  Trajectory rojoIzq3LRG(SampleMecanumDrive drive){
         return drive.trajectoryBuilder((new Pose2d(46.5,-25, Math.toRadians(0))), Math.toRadians(0))
-                .lineToLinearHeading(new Pose2d(35,-31, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(20,-31, Math.toRadians(0)))
                 .build();
     }
 
+    public  Trajectory rojoIzq3yMedioLRG(SampleMecanumDrive drive){
+        return drive.trajectoryBuilder((new Pose2d(20,-31, Math.toRadians(0))), Math.toRadians(0))
+                .lineToLinearHeading(new Pose2d(-16,-31, Math.toRadians(0)))
+                .build();
+    }
+
+
     public Trajectory rojoIzq4LRG(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(35,-31, Math.toRadians(0)))
+        return drive.trajectoryBuilder(new Pose2d(-16,-31, Math.toRadians(0)))
                 .lineToLinearHeading((new Pose2d(-30, -31, Math.toRadians(0)))
                 , drive.getVelocityConstraint(60, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
@@ -112,14 +119,14 @@ public class AutosRojosPoderosos {
 
     public Trajectory rojoIzq5LRG(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder(new Pose2d(-30, -31, Math.toRadians(0)))
-                .lineToLinearHeading((new Pose2d(-65,-32, Math.toRadians(180))),
+                .lineToLinearHeading((new Pose2d(-65,-33, Math.toRadians(180))),
                         drive.getVelocityConstraint(60, 100, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .build();
     }
 
     public Trajectory rojoIzq5yMedioLRG(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(-65, -32, Math.toRadians(180)))
+        return drive.trajectoryBuilder(new Pose2d(-65, -33, Math.toRadians(180)))
                 .lineToLinearHeading((new Pose2d(-65,-20, Math.toRadians(180))),
                         drive.getVelocityConstraint(20, 100, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
