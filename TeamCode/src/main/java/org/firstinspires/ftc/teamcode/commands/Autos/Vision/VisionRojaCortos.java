@@ -59,33 +59,35 @@ public class VisionRojaCortos extends CommandOpMode {
         elevator = new Elevator(telemetry, hardwareMap);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
 
-        sleep(1000);
 
-        while(!isStarted()) {
+        while(opModeInInit()) {
             telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
-            if (cX > 350 && cY > 200 && width >50) {
+            if (cX > 350 && width > 10) {
                 telemetry.addData("Posicion", "A la derecha");
-            } else if (cX > 0 && cX < 350 && cY > 200 && width > 50) {
+            } else if (cX > 0 && cX < 350  && width >10) {
                 telemetry.addData("Posicion", "En medio");
-                CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
             } else{
                 telemetry.addData("Posicion", "Lado Izquierdo");
-                CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
-                ;
+
             }
             telemetry.update();
         }
         telemetry.update();
+
+
         waitForStart();
 
+        telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
+        telemetry.addData("Distance in Inch", (getDistance(width)));
+        telemetry.update();
 
-        if(cX > 350 && cY > 200) {
+        if(cX > 350 && width >10) {
                 CommandScheduler.getInstance().schedule(new RojoDer(drive, elevator, intake, pixelHolder));
-            }else if(cX > 0 && cX < 350 && cY > 200) {
+            }else if(cX > 0 && cX < 350 && width > 10)  {
                 CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
             }else {
                 CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
-                ;
+
             }
 
 
@@ -100,6 +102,7 @@ public class VisionRojaCortos extends CommandOpMode {
 
         controlHubCam = OpenCvCameraFactory.getInstance().createWebcam(
                 hardwareMap.get(WebcamName.class, "camara1"), cameraMonitorViewId);
+
 
         controlHubCam.setPipeline(new BlobDetectionPipeline());
 

@@ -19,7 +19,7 @@ public class Rojos extends CommandOpMode {
     RojoIzq rojoIzq;
     RojoDer rojoDer;
     RojoMid rojoMid;
-    RojoIzqLRG rojoIzqLRG;
+    RojoIzqPDR rojoIzqLRG;
 
     @Override
     public void initialize() {
@@ -31,7 +31,7 @@ public class Rojos extends CommandOpMode {
         rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
         //rojoDer = new RojoDer(drive,elevator,intake,pixelHolder);
         //rojoMid = new RojoMid(drive,elevator,intake,pixelHolder);
-        rojoIzqLRG = new RojoIzqLRG(drive,elevator, intake, pixelHolder);
+        rojoIzqLRG = new RojoIzqPDR(drive,elevator, intake, pixelHolder);
         schedule(rojoIzqLRG);
 
     }

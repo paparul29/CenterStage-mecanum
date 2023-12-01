@@ -16,14 +16,14 @@ import org.firstinspires.ftc.teamcode.subsystems.PixelHolder;
 
 import java.util.function.BooleanSupplier;
 
-public class RojoIzqLRG extends SequentialCommandGroup {
+public class RojoIzqPDR extends SequentialCommandGroup {
     AutosRojosPoderosos autosRojosPoderosos = new AutosRojosPoderosos();
 
-    public RojoIzqLRG(MecanumDriveSubsystem drive, Elevator elevator, Intake intake, PixelHolder pixelHolder) {
+    public RojoIzqPDR(MecanumDriveSubsystem drive, Elevator elevator, Intake intake, PixelHolder pixelHolder) {
         BooleanSupplier sup = new BooleanSupplier() {
             @Override
             public boolean getAsBoolean() {
-                return RojoIzqLRG.super.isScheduled();
+                return RojoIzqPDR.super.isScheduled();
             }
         };
         addCommands(

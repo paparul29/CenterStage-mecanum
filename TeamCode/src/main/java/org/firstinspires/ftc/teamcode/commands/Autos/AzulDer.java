@@ -28,6 +28,7 @@ public class AzulDer extends SequentialCommandGroup {
         };
         addCommands(
                 new TrajectoryFollowerCommand(drive, autosAzules.azulDer1(drive.getDrive())),
+                new TrajectoryFollowerCommand(drive, autosAzules.azulDer1yMedio(drive.getDrive())),
                 new IntakeCommand(intake,-.2),
                 new TrajectoryFollowerCommand(drive, autosAzules.azulDer2(drive.getDrive())),
                 new TrajectoryFollowerCommand(drive, autosAzules.azulDer3(drive.getDrive())),

@@ -8,8 +8,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.commands.Autos.AzulDer;
-import org.firstinspires.ftc.teamcode.commands.Autos.AzulIzq;
-import org.firstinspires.ftc.teamcode.commands.Autos.AzulMid;
+import org.firstinspires.ftc.teamcode.commands.Autos.RojoDer;
+import org.firstinspires.ftc.teamcode.commands.Autos.RojoIzq;
+import org.firstinspires.ftc.teamcode.commands.Autos.RojoMid;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.Elevator;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Autonomous
-public class VisionAzulCortos extends CommandOpMode {
+public class VisionRojaLargos extends CommandOpMode {
 
     double cX = 0;
     double cY = 0;
@@ -60,37 +61,32 @@ public class VisionAzulCortos extends CommandOpMode {
 
         sleep(1000);
 
-        while(!isStarted()){
+        while(!isStarted()) {
             telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
-
-            if(cX > 359 && width >40){
-                telemetry.addLine("A la derecha");
-            }else if(cX > 0 && cX < 358 && width >40) {
-                telemetry.addLine("En medio");
-                CommandScheduler.getInstance().schedule(new AzulMid(drive, elevator, intake, pixelHolder));
-            }else{
-                telemetry.addLine("Lado Izquierdo");
-                CommandScheduler.getInstance().schedule(new AzulIzq(drive, elevator, intake, pixelHolder));
+            if (cX > 350 && cY > 200 && width >50) {
+                telemetry.addData("Posicion", "A la derecha");
+            } else if (cX > 0 && cX < 350 && cY > 200 && width > 50) {
+                telemetry.addData("Posicion", "En medio");
+                CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
+            } else{
+                telemetry.addData("Posicion", "Lado Izquierdo");
+                CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
+                ;
             }
             telemetry.update();
         }
         telemetry.update();
-
         waitForStart();
-        sleep(1000);
-        telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
-        telemetry.addData("Distance in Inch", (getDistance(width)));
-        telemetry.update();
-
-            if (cX > 359 && width >40) {
-                CommandScheduler.getInstance().schedule(new AzulDer(drive, elevator, intake, pixelHolder));
-            }else if(cX > 0 && cX < 358 && width >40) {
-                CommandScheduler.getInstance().schedule(new AzulMid(drive, elevator, intake, pixelHolder));
-            }else{
-                CommandScheduler.getInstance().schedule(new AzulIzq(drive, elevator, intake, pixelHolder));
-            }
 
 
+        if(cX > 350 && cY > 200 && width >50) {
+            CommandScheduler.getInstance().schedule(new RojoDer(drive, elevator, intake, pixelHolder));
+        }else if(cX > 0 && cX < 350 && cY > 200 && width > 50)  {
+            CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
+        }else {
+            CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
+            ;
+        }
 
 
 
@@ -111,21 +107,21 @@ public class VisionAzulCortos extends CommandOpMode {
         controlHubCam.startStreaming(CAMERA_WIDTH, CAMERA_HEIGHT, OpenCvCameraRotation.UPRIGHT);
     }
     class BlobDetectionPipeline extends OpenCvPipeline {
-        Mat blueMask;
+        Mat redMask;
         Mat hierarchy = new Mat();
         @Override
         public Mat processFrame(Mat input) {
-            blueMask = preprocessFrame(input);
-            // Preprocess the frame to detect blue regions
-            // Find contours of the detected blue regions
+            redMask = preprocessFrame(input);
+            // Preprocess the frame to detect red regions
+            // Find contours of the detected red regions
             List<MatOfPoint> contours = new ArrayList<>();
-            Imgproc.findContours(blueMask, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+            Imgproc.findContours(redMask, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
-            // Find the largest blue contour (blob)
+            // Find the largest red contour (blob)
             MatOfPoint largestContour = findLargestContour(contours);
 
             if (largestContour != null) {
-                // Draw a blue outline around the largest detected object
+                // Draw a red outline around the largest detected object
                 Imgproc.drawContours(input, contours, contours.indexOf(largestContour), new Scalar(255, 0, 0), 2);
                 // Calculate the width of the bounding box
                 width = calculateWidth(largestContour);
@@ -141,33 +137,31 @@ public class VisionAzulCortos extends CommandOpMode {
                 cX = moments.get_m10() / moments.get_m00();
                 cY = moments.get_m01() / moments.get_m00();
 
-
-
-
                 // Draw a dot at the centroid
                 String label = "(" + (int) cX + ", " + (int) cY + ")";
                 Imgproc.putText(input, label, new Point(cX + 10, cY), Imgproc.FONT_HERSHEY_COMPLEX, 0.5, new Scalar(0, 255, 0), 2);
                 Imgproc.circle(input, new Point(cX, cY), 5, new Scalar(0, 255, 0), -1);
 
             }
+
             return input;
         }
         Mat hsvFrame = new Mat();
         private Mat preprocessFrame(Mat frame) {
             Imgproc.cvtColor(frame, hsvFrame, Imgproc.COLOR_BGR2HSV);
 
-            Scalar lowerblue = new Scalar(0, 100, 100);
-            Scalar upperblue = new Scalar(60, 255, 255);
+            Scalar lowerred = new Scalar(60, 150, 150);
+            Scalar upperred = new Scalar(120, 255, 255);
 
 
-            blueMask = new Mat();
-            Core.inRange(hsvFrame, lowerblue, upperblue, blueMask);
+            redMask = new Mat();
+            Core.inRange(hsvFrame, lowerred, upperred, redMask);
 
             Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(5, 5));
-            Imgproc.morphologyEx(blueMask, blueMask, Imgproc.MORPH_OPEN, kernel);
-            Imgproc.morphologyEx(blueMask, blueMask, Imgproc.MORPH_CLOSE, kernel);
+            Imgproc.morphologyEx(redMask, redMask, Imgproc.MORPH_OPEN, kernel);
+            Imgproc.morphologyEx(redMask, redMask, Imgproc.MORPH_CLOSE, kernel);
 
-            return blueMask;
+            return redMask;
         }
 
         private MatOfPoint findLargestContour(List<MatOfPoint> contours) {
