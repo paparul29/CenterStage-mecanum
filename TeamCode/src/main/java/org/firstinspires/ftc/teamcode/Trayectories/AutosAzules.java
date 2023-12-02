@@ -15,18 +15,18 @@ public class AutosAzules {
 
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(firstPose)
-                .lineToLinearHeading(new Pose2d(8.8, 26, Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(8.9, 26, Math.toRadians(-90)))
                 .build();
     }
 
     public Trajectory azulMedio2(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(8.8, 26, Math.toRadians(-90)), Math.toRadians(-90))
+        return drive.trajectoryBuilder(new Pose2d(8.9, 26, Math.toRadians(-90)), Math.toRadians(-90))
                 .back(20)
                 .build();
     }
 
     public Trajectory azulMedio3(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(6, 46, Math.toRadians(-90)), Math.toRadians(-90))
+        return drive.trajectoryBuilder(new Pose2d(8.9, 46, Math.toRadians(-90)), Math.toRadians(-90))
                 .splineToSplineHeading(new Pose2d(42, 25, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }

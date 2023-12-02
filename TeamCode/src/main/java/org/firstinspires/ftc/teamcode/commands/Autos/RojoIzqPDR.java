@@ -51,7 +51,7 @@ public class RojoIzqPDR extends SequentialCommandGroup {
 
                 new ParallelCommandGroup(new TrajectoryFollowerCommand(drive,autosRojosPoderosos.rojoIzq6LRG(drive.getDrive())), new IntakeCommand(intake, -.7), new InstantCommand(pixelHolder::hold)),
                 new TrajectoryFollowerCommand(drive,autosRojosPoderosos.rojoIzq7LRG(drive.getDrive())),
-                new ElevadorGoToPosition(elevator,1800),
+                new ElevadorGoToPosition(elevator,1300),
                 new WaitCommand(400),
                 new InstantCommand(pixelHolder::elevator),
                 new WaitCommand(300),

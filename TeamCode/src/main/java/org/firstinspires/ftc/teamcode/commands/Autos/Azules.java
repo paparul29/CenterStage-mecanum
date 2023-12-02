@@ -19,6 +19,7 @@ public class Azules extends CommandOpMode {
     AzulDer azulDer;
     AzulMid azulMid;
     AzulIzq azulIzq;
+    AzulMidLRG azulMidLRG;
 
 
     @Override
@@ -28,10 +29,12 @@ public class Azules extends CommandOpMode {
         drive = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
         elevator = new Elevator(telemetry, hardwareMap);
-        azulMid = new AzulMid(drive, elevator,intake,pixelHolder);
+        //azulMid = new AzulMid(drive, elevator,intake,pixelHolder);
         //azulIzq = new AzulIzq(drive,elevator,intake,pixelHolder);
         //azulDer = new AzulDer(drive,elevator,intake,pixelHolder);
+        azulMidLRG = new AzulMidLRG(drive, elevator,intake,pixelHolder);
 
-        schedule(azulMid);
+
+        schedule(azulMidLRG);
     }
 }

@@ -49,7 +49,7 @@ public class VisionAzulPODEROSOS extends CommandOpMode {
     SampleMecanumDrive sampleMecanumDrive;
     MecanumDriveSubsystem drive;
 
-    @Override
+
     public void initialize() {
         initOpenCV();
         FtcDashboard dashboard = FtcDashboard.getInstance();

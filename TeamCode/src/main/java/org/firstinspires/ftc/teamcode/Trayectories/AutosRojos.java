@@ -31,18 +31,18 @@ public class AutosRojos {
 
     public Trajectory rojoMid3(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(6, -49, Math.toRadians(90))), Math.toRadians(90))
-                .splineToSplineHeading(new Pose2d(42, -31, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(42, -31.3, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
 
     public Trajectory rojoMid4(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(42, -31, Math.toRadians(0)), Math.toRadians(0))
-                .splineToSplineHeading(new Pose2d(47, -31, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(42, -31.3, Math.toRadians(0)), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(47, -31.3, Math.toRadians(0)), Math.toRadians(0))
                 .build();
     }
 
     public Trajectory rojoMid5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder(new Pose2d(47, -31, Math.toRadians(0)), Math.toRadians(0))
+        return drive.trajectoryBuilder(new Pose2d(47, -31.3, Math.toRadians(0)), Math.toRadians(0))
                 .lineTo(new Vector2d(35, -26.5))
                 .build();
     }

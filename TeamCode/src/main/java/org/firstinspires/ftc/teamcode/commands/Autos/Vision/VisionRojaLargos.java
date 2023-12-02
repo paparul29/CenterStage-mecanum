@@ -27,7 +27,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import java.util.ArrayList;
 import java.util.List;
 
-@Autonomous
+//@Autonomous
 public class VisionRojaLargos extends CommandOpMode {
 
     double cX = 0;
@@ -47,7 +47,7 @@ public class VisionRojaLargos extends CommandOpMode {
     SampleMecanumDrive sampleMecanumDrive;
     MecanumDriveSubsystem drive;
 
-    @Override
+    //@Override
     public void initialize() {
         initOpenCV();
         FtcDashboard dashboard = FtcDashboard.getInstance();
