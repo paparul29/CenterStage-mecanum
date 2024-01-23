@@ -9,7 +9,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 public class PixelHolder extends SubsystemBase {
-    ServoEx pixel1, pixel2, pixelHolder1, pixelHolder2;
+    ServoEx pixel1, pixel2, pixelHolderIzq, pixelHolderDer;
     Telemetry telemetry;
     HardwareMap hardwareMap;
 
@@ -19,10 +19,12 @@ public class PixelHolder extends SubsystemBase {
 
         pixel1 = new SimpleServo(hardwareMap, "pixel1", 0, 180, AngleUnit.DEGREES);
         pixel2 = new SimpleServo(hardwareMap, "pixel2", 0, 180, AngleUnit.DEGREES);
-        pixelHolder1 = new SimpleServo(hardwareMap, "pixelH1", 0, 180, AngleUnit.DEGREES);
-        pixelHolder2 = new SimpleServo(hardwareMap, "pixelH2", 0, 180, AngleUnit.DEGREES);
+        //amarillo puerto 2
+        pixelHolderIzq = new SimpleServo(hardwareMap, "pixelH1", 0, 180, AngleUnit.DEGREES);
+        //azul puerto 3
+        pixelHolderDer = new SimpleServo(hardwareMap, "pixelH2", 0, 180, AngleUnit.DEGREES);
         pixel2.setInverted(false);
-        pixelHolder2.setInverted(true);
+        pixelHolderDer.setInverted(true);
 
         pixel1Soltar();
         pixel2Hold();
@@ -61,20 +63,20 @@ public class PixelHolder extends SubsystemBase {
 
     //Dejar pixeles
     public void leave(){
-        pixelHolder1.turnToAngle(147);
-        pixelHolder2.turnToAngle(147);
+        pixelHolderIzq.turnToAngle(0);
+        pixelHolderDer.turnToAngle(0);
     }
 
     //Agarrar pixeles
     public void grab(){
-        pixelHolder1.turnToAngle(74);
-        pixelHolder2.turnToAngle(74);
+        pixelHolderIzq.turnToAngle(85);
+        pixelHolderDer.turnToAngle(85);
     }
 
     //para poder subir y bajar con el elevador
     public void elevator(){
-        pixelHolder1.turnToAngle(66);
-        pixelHolder2.turnToAngle(66);
+        pixelHolderIzq.turnToAngle(115);
+        pixelHolderDer.turnToAngle(115);
     }
 
 

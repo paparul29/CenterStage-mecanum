@@ -10,6 +10,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.commands.ElevadorDefault;
+import org.firstinspires.ftc.teamcode.commands.EscaladorDefault;
 import org.firstinspires.ftc.teamcode.commands.MecanumDriveCommand;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.Elevator;
@@ -50,17 +51,20 @@ public class TeleOpMode extends CommandOpMode {
                 .whenReleased(() -> intake.setLaunch(0));
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.Y)
-                .whileHeld(() -> escalador.setPower(1))
-                .whenReleased(() -> escalador.setPower(0));
+                .whenPressed(()->intake.arriba());
+
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.B)
+                .whenPressed(()->intake.abajo());
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.A)
-                .whileHeld(() -> escalador.setPower(-1))
-                .whenReleased(() -> escalador.setPower(0));
+                .whenPressed(()->intake.masAbajo());
+
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.Y)
                 .whenPressed(() -> elevator.setPosition(1, 3500));
 
         elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder));
+        escalador.setDefaultCommand(new EscaladorDefault(escalador, gamepadDriver));
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.B)
                 .toggleWhenPressed(()-> pixelHolder.hold(), ()-> pixelHolder.soltar());

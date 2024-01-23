@@ -47,7 +47,7 @@ public class ElevadorDefault extends CommandBase {
             CommandScheduler.getInstance().schedule(new ElevadorGoToPosition(elevator, 2100));
         }
 
-
+/*
         if(elevator.getPosition() > 1000){
             CommandScheduler.getInstance().schedule(new InstantCommand(pixelHolder::leave));
         }
@@ -57,6 +57,8 @@ public class ElevadorDefault extends CommandBase {
         if(elevator.getPosition() < 0){
             CommandScheduler.getInstance().schedule(new InstantCommand(pixelHolder::grab));
         }
+
+ */
 
 
         if (gamepad.getTrigger(GamepadKeys.Trigger.LEFT_TRIGGER) > .5){

@@ -16,14 +16,18 @@ public class Intake extends SubsystemBase {
     HardwareMap hardwareMap;
     Telemetry telemetry;
     CRServo avion;
+    ServoEx topple;
 
 
     public Intake(Telemetry telemetry, HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         this.telemetry = telemetry;
+        //1
         intake = hardwareMap.get(DcMotorEx.class, "Intake");
-        intake.setDirection(DcMotorSimple.Direction.FORWARD);
+        intake.setDirection(DcMotorSimple.Direction.REVERSE);
         avion = hardwareMap.get(CRServo.class, "avion");
+        //puerto 4
+        topple = new SimpleServo(hardwareMap, "topple", 0, 180, AngleUnit.DEGREES);
 
 
 
@@ -36,7 +40,17 @@ public class Intake extends SubsystemBase {
         avion.setPower(power);
     }
 
+    public void abajo(){
+        topple.turnToAngle(146);
+    }
 
+    public void arriba(){
+        topple.turnToAngle(80);
+    }
+
+    public void masAbajo(){
+        topple.turnToAngle(142);
+    }
 
 
 }
