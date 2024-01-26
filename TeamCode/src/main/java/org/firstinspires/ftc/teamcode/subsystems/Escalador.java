@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.subsystems;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -20,6 +21,7 @@ public class Escalador extends SubsystemBase {
         escalador = hardwareMap.get(DcMotorEx.class, "escalador");
         escalador.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         escalador.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        escalador.setDirection(DcMotorSimple.Direction.REVERSE);
 
     }
 

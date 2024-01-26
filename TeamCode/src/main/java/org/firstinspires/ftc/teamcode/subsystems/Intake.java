@@ -25,11 +25,11 @@ public class Intake extends SubsystemBase {
         //1
         intake = hardwareMap.get(DcMotorEx.class, "Intake");
         intake.setDirection(DcMotorSimple.Direction.REVERSE);
-        avion = hardwareMap.get(CRServo.class, "avion");
         //puerto 4
         topple = new SimpleServo(hardwareMap, "topple", 0, 180, AngleUnit.DEGREES);
 
 
+        init();
 
     }
 
@@ -41,11 +41,15 @@ public class Intake extends SubsystemBase {
     }
 
     public void abajo(){
-        topple.turnToAngle(146);
+        topple.turnToAngle(147);
+    }
+
+    public void init(){
+        topple.turnToAngle(80);
     }
 
     public void arriba(){
-        topple.turnToAngle(80);
+        topple.turnToAngle(100);
     }
 
     public void masAbajo(){

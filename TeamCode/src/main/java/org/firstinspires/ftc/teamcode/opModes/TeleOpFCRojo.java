@@ -48,12 +48,13 @@ public class TeleOpFCRojo extends CommandOpMode {
                 .whenReleased(() -> intake.setLaunch(0));
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.Y)
-                .whileHeld(() -> escalador.setPower(1))
-                .whenReleased(() -> escalador.setPower(0));
+                .whenPressed(()->intake.arriba());
+
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.B)
+                .whenPressed(()->intake.abajo());
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.A)
-                .whileHeld(() -> escalador.setPower(-1))
-                .whenReleased(() -> escalador.setPower(0));
+                .whenPressed(()->intake.masAbajo());
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.Y)
                 .whenPressed(() -> elevator.setPosition(1, 3500));
@@ -61,7 +62,7 @@ public class TeleOpFCRojo extends CommandOpMode {
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.RIGHT_BUMPER)
                 .whenPressed(()-> elevator.setPosition(1,2700));
 
-        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder));
+        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder, intake));
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.B)
                 .toggleWhenPressed(()-> pixelHolder.hold(), ()-> pixelHolder.soltar());

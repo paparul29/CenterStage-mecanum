@@ -59,11 +59,13 @@ public class TeleOpMode extends CommandOpMode {
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.A)
                 .whenPressed(()->intake.masAbajo());
 
+        new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.RIGHT_BUMPER)
+                .whenPressed(() -> elevator.setPosition(1, 2700));
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.Y)
                 .whenPressed(() -> elevator.setPosition(1, 3500));
 
-        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder));
+        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder, intake));
         escalador.setDefaultCommand(new EscaladorDefault(escalador, gamepadDriver));
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.B)
