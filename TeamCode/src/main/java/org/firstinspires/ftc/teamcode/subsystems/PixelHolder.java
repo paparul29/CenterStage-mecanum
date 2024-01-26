@@ -69,8 +69,8 @@ public class PixelHolder extends SubsystemBase {
 
     //Agarrar pixeles
     public void grab(){
-        pixelHolderIzq.turnToAngle(124);
-        pixelHolderDer.turnToAngle(124);
+        pixelHolderIzq.turnToAngle(117);
+        pixelHolderDer.turnToAngle(117);
     }
 
     //para poder subir y bajar con el elevador
