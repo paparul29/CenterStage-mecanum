@@ -11,7 +11,7 @@ public class AutosAzules {
 
     //CORTOS
     public Trajectory azulMedio1(SampleMecanumDrive drive) {
-        Pose2d firstPose = new Pose2d(6, 50.4, Math.toRadians(-90));
+        Pose2d firstPose = new Pose2d(12, 61, Math.toRadians(-90));
 
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(firstPose)

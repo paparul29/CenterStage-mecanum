@@ -32,7 +32,7 @@ public class AzulMid extends SequentialCommandGroup {
                 new TrajectoryFollowerCommand(drive, autosAzules.azulMedio2(drive.getDrive())),
                 new TrajectoryFollowerCommand(drive, autosAzules.azulMedio3(drive.getDrive())),
                 new InstantCommand(pixelHolder::elevator),
-                new WaitCommand(500),
+                new WaitCommand(800),
                 new ElevadorGoToPosition(elevator,1300),
                 new WaitCommand(600),
                 new InstantCommand(pixelHolder::leave),

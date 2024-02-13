@@ -11,43 +11,53 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Elevator extends SubsystemBase {
 
-    DcMotorEx elevador;
+    DcMotorEx elevadorizq, elevadorder;
     Telemetry telemetry;
     HardwareMap hardwareMap;
 
     public Elevator(Telemetry telemetry, HardwareMap hardwareMap) {
-        elevador = hardwareMap.get(DcMotorEx.class, "elevador");
+        //3
+        elevadorizq = hardwareMap.get(DcMotorEx.class, "elevadorizq");
+        //2
+        elevadorder = hardwareMap.get(DcMotorEx.class, "elevadorder");
+
         this.telemetry = telemetry;
         this.hardwareMap = hardwareMap;
 
-        elevador.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        elevador.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        elevador.setDirection(DcMotorSimple.Direction.FORWARD);
+        elevadorizq.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        elevadorder.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //elevadorizq.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        elevadorizq.setDirection(DcMotorSimple.Direction.REVERSE);
+        //elevadorder.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //elevadorder.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
 
     public void setPosition(double power, int pos) {
-        elevador.setTargetPosition(pos);
-        elevador.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        elevador.setPower(power);
+        elevadorizq.setTargetPosition(pos);
+        elevadorder.setTargetPosition(pos);
+        elevadorizq.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        elevadorder.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        elevadorizq.setPower(power);
+        elevadorder.setPower(power);
     }
 
     public int getPosition(){
-        return elevador.getCurrentPosition();
+        return elevadorizq.getCurrentPosition()+elevadorder.getCurrentPosition();
     }
 
     public void setPower(double power){
-        elevador.setPower(power);
+        elevadorizq.setPower(power);
     }
 
     public boolean isAtSetpoint(){
-        boolean isAtPosition = elevador.getCurrentPosition() - elevador.getTargetPosition() < elevador.getTargetPositionTolerance();
+        boolean isAtPosition = elevadorizq.getCurrentPosition() - elevadorizq.getTargetPosition() < elevadorizq.getTargetPositionTolerance();
         return  isAtPosition;
     }
 
     @Override
     public void periodic(){
-       telemetry.addData("Elevador: ", elevador.getCurrentPosition());
+        telemetry.addData("Elevador: ", elevadorizq.getVelocity());
     }
 
 

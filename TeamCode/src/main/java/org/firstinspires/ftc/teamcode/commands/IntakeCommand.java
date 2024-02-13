@@ -12,7 +12,7 @@ public class IntakeCommand extends CommandBase {
 
     Intake intake;
     double power;
-    Timing.Timer timer = new Timing.Timer(2, TimeUnit.SECONDS);
+    Timing.Timer timer = new Timing.Timer(2500, TimeUnit.MILLISECONDS);
 
     public IntakeCommand(Intake intake, double power) {
         this.power = power;

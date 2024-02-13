@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.commands.Autos;
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.Trayectories.FantasyRed;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.Elevator;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -19,8 +20,11 @@ public class Rojos extends CommandOpMode {
     RojoIzq rojoIzq;
     RojoDer rojoDer;
     RojoMid rojoMid;
-    RojoIzqPDR rojoIzqPDR;
-    RojoMidLRG rojoMidLRG;
+    BuenosRojosMid buenosRojosMid;
+    BuenosRojosIzq buenosRojosIzq;
+    BuenosRojosDer buenosRojosDer;
+
+    RedFantasy redFantasy;
 
     @Override
     public void initialize() {
@@ -29,13 +33,14 @@ public class Rojos extends CommandOpMode {
         drive = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
         elevator = new Elevator(telemetry, hardwareMap);
-        rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
+        //rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
         //rojoDer = new RojoDer(drive,elevator,intake,pixelHolder);
         //rojoMid = new RojoMid(drive,elevator,intake,pixelHolder);
-        //rojoIzqLRG = new RojoIzqPDR(drive,elevator, intake, pixelHolder);
-        rojoMidLRG = new RojoMidLRG(drive,elevator,intake,pixelHolder);
-        schedule(rojoMidLRG);
+        redFantasy = new RedFantasy(drive);
+        //buenosRojosIzq = new BuenosRojosIzq(drive,elevator,intake,pixelHolder);
+        //buenosRojosMid = new BuenosRojosMid(drive, elevator, intake, pixelHolder);
+        buenosRojosDer = new BuenosRojosDer(drive, elevator, intake, pixelHolder);
+        schedule(buenosRojosDer);
 
     }
 }
-

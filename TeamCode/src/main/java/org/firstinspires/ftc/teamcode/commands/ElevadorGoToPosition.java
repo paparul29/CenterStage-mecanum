@@ -8,6 +8,7 @@ public class ElevadorGoToPosition extends CommandBase {
     Elevator elevator;
     int setPoint;
 
+
     public ElevadorGoToPosition(Elevator elevator, int setPoint){
         this.elevator = elevator;
         this.setPoint = setPoint;

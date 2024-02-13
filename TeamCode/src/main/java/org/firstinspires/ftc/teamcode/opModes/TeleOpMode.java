@@ -10,7 +10,9 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.commands.ElevadorDefault;
+import org.firstinspires.ftc.teamcode.commands.EscaladorDefault;
 import org.firstinspires.ftc.teamcode.commands.MecanumDriveCommand;
+import org.firstinspires.ftc.teamcode.commands.Sensores;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.Elevator;
 import org.firstinspires.ftc.teamcode.subsystems.Escalador;
@@ -29,38 +31,55 @@ public class TeleOpMode extends CommandOpMode {
         Elevator elevator = new Elevator(telemetry, hardwareMap);
         PixelHolder pixelHolder = new PixelHolder(hardwareMap, telemetry);
         Escalador escalador = new Escalador(hardwareMap, telemetry);
-        
+
         GamepadEx gamepadDriver = new GamepadEx(gamepad1);
         GamepadEx gamepadC = new GamepadEx(gamepad2);
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.LEFT_BUMPER)
-                .whileHeld(() -> intake.setPower(.5))
+                .whileHeld(() -> intake.setPower(1))
                 .whenReleased(() -> intake.setPower(0));
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.RIGHT_BUMPER)
                 .whileHeld(() -> intake.setPower(-1))
                 .whenReleased(() -> intake.setPower(0));
 
-        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_RIGHT)
-                .whileHeld(() -> intake.setLaunch(1))
-                .whenReleased(() -> intake.setLaunch(0));
 
+
+
+
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_UP)
+                .whenPressed(()-> intake.letItFly());
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_LEFT)
-                .whileHeld(() -> intake.setLaunch(-1))
-                .whenReleased(() -> intake.setLaunch(0));
+                .whenPressed(()-> intake.midClose());
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.DPAD_RIGHT)
+                .whenPressed(()-> intake.close());
+
+
+
+
+
+
+
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.Y)
-                .whileHeld(() -> escalador.setPower(1))
-                .whenReleased(() -> escalador.setPower(0));
+                .whenPressed(()->intake.arriba());
+
+        new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.B)
+                .whenPressed(()->intake.abajo());
 
         new GamepadButton(new GamepadEx(gamepad1), GamepadKeys.Button.A)
-                .whileHeld(() -> escalador.setPower(-1))
-                .whenReleased(() -> escalador.setPower(0));
+                .whenPressed(()->intake.masAbajo());
+
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.Y)
-                .whenPressed(() -> elevator.setPosition(1, 3500));
+                .whenPressed(() -> elevator.setPosition(1, 2800));
 
-        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder));
+        new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.RIGHT_BUMPER)
+                .whenPressed(()-> elevator.setPosition(1,2100));
+
+        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder, intake));
+        escalador.setDefaultCommand(new EscaladorDefault(escalador, gamepadDriver));
+
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.B)
                 .toggleWhenPressed(()-> pixelHolder.hold(), ()-> pixelHolder.soltar());
@@ -79,6 +98,17 @@ public class TeleOpMode extends CommandOpMode {
 
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.DPAD_DOWN)
                 .whenPressed(()-> pixelHolder.grab());
+
+
+
+        /*new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.BACK)
+                .whenPressed(()-> new Sensores(intake,pixelHolder));
+
+         */
+
+
+
+
 
 
 
