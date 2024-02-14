@@ -72,6 +72,7 @@ public class VisionRojaCortos extends CommandOpMode {
                 else{
                     telemetry.addData("Posicion", "Lado derecho");
 
+
                 }
             telemetry.update();
         }
