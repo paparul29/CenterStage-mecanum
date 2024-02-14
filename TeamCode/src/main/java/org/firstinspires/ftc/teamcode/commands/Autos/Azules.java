@@ -22,8 +22,6 @@ public class Azules extends CommandOpMode {
     AzulesBuenosMid azulesBuenosMid;
     AzulesBuenosDer azulesBuenosDer;
     AzulesBuenosIzq azulesBuenosIzq;
-    
-
     @Override
     public void initialize() {
         intake = new Intake(telemetry, hardwareMap);
@@ -31,7 +29,7 @@ public class Azules extends CommandOpMode {
         drive = new MecanumDriveSubsystem(sampleMecanumDrive, false, false);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
         elevator = new Elevator(telemetry, hardwareMap);
-        azulMid = new AzulMid(drive, elevator,intake,pixelHolder);
+        //azulMid = new AzulMid(drive, elevator,intake,pixelHolder);
         //azulIzq = new AzulIzq(drive,elevator,intake,pixelHolder);
         //azulDer = new AzulDer(drive,elevator,intake,pixelHolder);
         azulesBuenosMid = new AzulesBuenosMid(drive, elevator, intake, pixelHolder);

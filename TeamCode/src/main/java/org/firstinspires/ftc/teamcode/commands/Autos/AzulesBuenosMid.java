@@ -32,20 +32,25 @@ public class AzulesBuenosMid extends SequentialCommandGroup {
 
                 new ParallelCommandGroup(
                         new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB1ymedio(drive.getDrive())),
-                        new ElevadorGoToPosition(elevator,1150)
+                        new ElevadorGoToPosition(elevator,1350)
                 ),
                 new InstantCommand(pixelHolder::leave),
+                new WaitCommand(250),
+                new ElevadorGoToPosition(elevator,910),
                 new WaitCommand(230),
                 new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB2(drive.getDrive())),
                 new WaitCommand(320),
                 new InstantCommand(pixelHolder::pixel1Soltar),
                 new InstantCommand(pixelHolder::pixel2Soltar),
                 new WaitCommand(200),
+                new ParallelCommandGroup(
                 new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB2ymedio(drive.getDrive())),
+                new ElevadorGoToPosition(elevator,1200)
+                        ),
+                new ParallelCommandGroup(
                 new InstantCommand(pixelHolder::elevator),
-                new WaitCommand(300),
-                new InstantCommand(intake::trans),
-                new WaitCommand(300),
+                new InstantCommand(intake::trans)
+                ),
                 new ElevadorGoToPosition(elevator,0),
                 new InstantCommand(pixelHolder::grab),
 
@@ -55,7 +60,8 @@ public class AzulesBuenosMid extends SequentialCommandGroup {
 
                 new ParallelCommandGroup(
                         new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB4(drive.getDrive())),
-                        new IntakeCommand(intake,-1)
+                        new IntakeCommand(intake,-1),
+                        new InstantCommand(pixelHolder::grab)
                 ),
                 new InstantCommand(intake::abajo),
                 new IntakeCommand(intake,-1),
@@ -76,16 +82,16 @@ public class AzulesBuenosMid extends SequentialCommandGroup {
                         new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB6(drive.getDrive()))
                 ),
                 new InstantCommand(pixelHolder::elevator),
-                new WaitCommand(250),
+                new WaitCommand(270),
                 new ElevadorGoToPosition(elevator,1500),
-                new WaitCommand(270),
+                new WaitCommand(400),
                 new InstantCommand(pixelHolder::leave),
-                new WaitCommand(370),
+                new WaitCommand(500),
                 new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB6ymedio(drive.getDrive())),
-                new WaitCommand(270),
+                new WaitCommand(250),
                 new InstantCommand(pixelHolder::pixel1Soltar),
                 new InstantCommand(pixelHolder::pixel2Soltar),
-                new WaitCommand(300),
+                new WaitCommand(230),
                 new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB7(drive.getDrive())),
                 new WaitCommand(200),
                 new InstantCommand(pixelHolder::elevator),

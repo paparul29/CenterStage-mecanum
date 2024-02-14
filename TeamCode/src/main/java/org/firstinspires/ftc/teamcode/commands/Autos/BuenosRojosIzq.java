@@ -26,32 +26,31 @@ public class BuenosRojosIzq extends SequentialCommandGroup {
                 return BuenosRojosIzq.super.isScheduled();}
         };
         addCommands(
-                new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB1(drive.getDrive())),
                 new InstantCommand(intake::arriba),
+                new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB1(drive.getDrive())),
                 new InstantCommand(pixelHolder::elevator),
 
                 new ParallelCommandGroup(
                         new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB1ymedio(drive.getDrive())),
-                        new ElevadorGoToPosition(elevator,1130)
+                        new ElevadorGoToPosition(elevator,1300)
                 ),
                 new InstantCommand(pixelHolder::leave),
-                new WaitCommand(250),
-                new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB2(drive.getDrive())),
                 new WaitCommand(350),
+                new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB2(drive.getDrive())),
+                new WaitCommand(300),
                 new InstantCommand(pixelHolder::pixel1Soltar),
                 new InstantCommand(pixelHolder::pixel2Soltar),
-                new WaitCommand(200),
+                new WaitCommand(300),
                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB2ymedio(drive.getDrive())),
-                new InstantCommand(pixelHolder::elevator),
-                new WaitCommand(300),
-                new InstantCommand(intake::trans),
-                new WaitCommand(300),
-                new ElevadorGoToPosition(elevator,0),
-                new InstantCommand(pixelHolder::grab),
-
-
-                new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB3(drive.getDrive())),
+                new WaitCommand(320),
+                new ParallelCommandGroup(
+                        new InstantCommand(pixelHolder::elevator),
+                        new InstantCommand(intake::trans),
+                        new ElevadorGoToPosition(elevator,0),
+                        new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB3(drive.getDrive()))
+                ),
                 new InstantCommand(intake::arriba),
+                new InstantCommand(pixelHolder::grab),
 
                 new ParallelCommandGroup(
                         new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB4(drive.getDrive())),
@@ -59,7 +58,6 @@ public class BuenosRojosIzq extends SequentialCommandGroup {
                 ),
                 new InstantCommand(intake::abajo),
                 new IntakeCommand(intake,-1),
-                new WaitCommand(500),
                 new InstantCommand(intake::masAbajo),
                 new IntakeCommand(intake,-1),
 
@@ -76,22 +74,23 @@ public class BuenosRojosIzq extends SequentialCommandGroup {
                         new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB6(drive.getDrive()))
                 ),
                 new InstantCommand(pixelHolder::elevator),
-                new WaitCommand(300),
-                new ElevadorGoToPosition(elevator,1300),
-                new WaitCommand(300),
+                new WaitCommand(250),
+                new ElevadorGoToPosition(elevator,1450),
+                new WaitCommand(350),
                 new InstantCommand(pixelHolder::leave),
-                new WaitCommand(300),
+                new WaitCommand(400),
                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB6ymedio(drive.getDrive())),
                 new WaitCommand(250),
                 new InstantCommand(pixelHolder::pixel1Soltar),
                 new InstantCommand(pixelHolder::pixel2Soltar),
-                new WaitCommand(370),
-                new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB7(drive.getDrive())),
-                new WaitCommand(200),
-                new InstantCommand(pixelHolder::elevator),
-                new InstantCommand(intake::trans),
-                new WaitCommand(250),
-                new ElevadorGoToPosition(elevator,0)
+                new WaitCommand(320),
+
+                new ParallelCommandGroup(
+                        new TrajectoryFollowerCommand(drive, rojosBuenos.rojoIzqB7(drive.getDrive())),
+                        new InstantCommand(pixelHolder::elevator),
+                        new InstantCommand(intake::trans),
+                        new ElevadorGoToPosition(elevator,0)
+                )
         );
     }
 }

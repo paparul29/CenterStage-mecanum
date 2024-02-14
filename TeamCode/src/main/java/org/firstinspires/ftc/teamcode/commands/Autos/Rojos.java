@@ -36,7 +36,7 @@ public class Rojos extends CommandOpMode {
         //rojoIzq = new RojoIzq(drive, elevator, intake, pixelHolder);
         //rojoDer = new RojoDer(drive,elevator,intake,pixelHolder);
         //rojoMid = new RojoMid(drive,elevator,intake,pixelHolder);
-        redFantasy = new RedFantasy(drive);
+        //redFantasy = new RedFantasy(drive);
         //buenosRojosIzq = new BuenosRojosIzq(drive,elevator,intake,pixelHolder);
         //buenosRojosMid = new BuenosRojosMid(drive, elevator, intake, pixelHolder);
         buenosRojosDer = new BuenosRojosDer(drive, elevator, intake, pixelHolder);

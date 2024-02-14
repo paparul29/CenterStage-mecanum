@@ -62,16 +62,19 @@ public class VisionAzulCortos extends CommandOpMode {
 
         while(!isStarted()){
             telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
-
-            if(cX > 359 && width >40){
-                telemetry.addLine("A la derecha");
-            }else if(cX > 0 && cX < 358 && width >40) {
-                telemetry.addLine("En medio");
-                CommandScheduler.getInstance().schedule(new AzulMid(drive, elevator, intake, pixelHolder));
-            }else{
-                telemetry.addLine("Lado Izquierdo");
-                CommandScheduler.getInstance().schedule(new AzulIzq(drive, elevator, intake, pixelHolder));
+            if (getDistance(width) < 100) {
+                if (cX < 400 && cX > 1) {
+                    telemetry.addLine("A la izquierda");
+                } else if (cX > 400 && cX < 650) {
+                    telemetry.addLine("En medio");
+                    CommandScheduler.getInstance().schedule(new AzulMid(drive, elevator, intake, pixelHolder));
+                }
             }
+            else{
+                    telemetry.addLine("Lado derecho");
+                    CommandScheduler.getInstance().schedule(new AzulIzq(drive, elevator, intake, pixelHolder));
+                }
+
             telemetry.update();
         }
         telemetry.update();
@@ -82,9 +85,9 @@ public class VisionAzulCortos extends CommandOpMode {
         telemetry.addData("Distance in Inch", (getDistance(width)));
         telemetry.update();
 
-            if (cX > 359 && width >40) {
+            if (cX < 400 && cX > 1) {
                 CommandScheduler.getInstance().schedule(new AzulDer(drive, elevator, intake, pixelHolder));
-            }else if(cX > 0 && cX < 358 && width >40) {
+            }else if(cX > 400 && cX < 650) {
                 CommandScheduler.getInstance().schedule(new AzulMid(drive, elevator, intake, pixelHolder));
             }else{
                 CommandScheduler.getInstance().schedule(new AzulIzq(drive, elevator, intake, pixelHolder));
@@ -156,8 +159,8 @@ public class VisionAzulCortos extends CommandOpMode {
         private Mat preprocessFrame(Mat frame) {
             Imgproc.cvtColor(frame, hsvFrame, Imgproc.COLOR_BGR2HSV);
 
-            Scalar lowerblue = new Scalar(0, 100, 100);
-            Scalar upperblue = new Scalar(60, 255, 255);
+            Scalar lowerblue = new Scalar(0, 100, 0);
+            Scalar upperblue = new Scalar(60, 255, 170);
 
 
             blueMask = new Mat();
