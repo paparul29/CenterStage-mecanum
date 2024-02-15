@@ -32,17 +32,17 @@ public class AzulBuenos {
                 .build();
     }
     public Trajectory azulMidB3(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(45, 33.5, Math.toRadians(180))), Math.toRadians(180))
+        return drive.trajectoryBuilder((new Pose2d(45, 33.5, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(39.26, 7, Math.toRadians(180)))
                 .build();
     }
     public Trajectory azulMidB4(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(39.26, 7, Math.toRadians(180))), Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(-57.8, 11, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(-58.7, 12, Math.toRadians(180)))
                 .build();
     }
     public Trajectory azulMidB5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(-57.8, 11, Math.toRadians(0))), Math.toRadians(0))
+        return drive.trajectoryBuilder((new Pose2d(-58.7, 12, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(-40.69, -2.38, Math.toRadians(0)))
                 .build();
     }
@@ -54,11 +54,11 @@ public class AzulBuenos {
     }
     public Trajectory azulMidB6ymedio(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(47, 33, Math.toRadians(0))), Math.toRadians(0))
-                .lineToLinearHeading(new Pose2d(52.8, 35, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(53, 35, Math.toRadians(0)))
                 .build();
     }
     public Trajectory azulMidB7(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(52.8, 33, Math.toRadians(0))), Math.toRadians(0))
+        return drive.trajectoryBuilder((new Pose2d(53, 33, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(47, 33, Math.toRadians(0)))
                 .build();
     }
@@ -71,7 +71,7 @@ public class AzulBuenos {
 
         drive.setPoseEstimate(firstPose);
         return drive.trajectoryBuilder(firstPose)
-                .splineTo(new Vector2d(7.6, 37.84), Math.toRadians(-107))
+                .splineTo(new Vector2d(7.6, 37.84), Math.toRadians(-105))
                 .build();
     }
     public Trajectory azulDerB1ymedio(SampleMecanumDrive drive) {
@@ -90,17 +90,17 @@ public class AzulBuenos {
                 .build();
     }
     public Trajectory azulDerB3(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(45, 27, Math.toRadians(180))), Math.toRadians(180))
+        return drive.trajectoryBuilder((new Pose2d(45, 27, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(40.86, 10, Math.toRadians(180)))
                 .build();
     }
     public Trajectory azulDerB4(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(40.86, 10, Math.toRadians(180))), Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(-59.35, 11.8, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(-59, 11, Math.toRadians(180)))
                 .build();
     }
     public Trajectory azulDerB5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(-59.35, 11.8, Math.toRadians(0))), Math.toRadians(0))
+        return drive.trajectoryBuilder((new Pose2d(-59, 11, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(-40.69, -2.38, Math.toRadians(0)))
                 .build();
     }
@@ -148,23 +148,23 @@ public class AzulBuenos {
                 .build();
     }
     public Trajectory azulIzqB3(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(47, 41.6, Math.toRadians(180))), Math.toRadians(180))
+        return drive.trajectoryBuilder((new Pose2d(47, 41.6, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(41.96, 10, Math.toRadians(180)))
                 .build();
     }
     public Trajectory azulIzqB4(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(41.96, 10, Math.toRadians(180))), Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(-58.3, 12.45, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(-59.3, 11, Math.toRadians(180)))
                 .build();
     }
     public Trajectory azulIzqB5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(-58.3, 12.45, Math.toRadians(0))), Math.toRadians(0))
+        return drive.trajectoryBuilder((new Pose2d(-59.3, 11, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(-40.69, -2.38, Math.toRadians(0)))
                 .build();
     }
     public Trajectory azulIzqB6(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(-40, -2, Math.toRadians(0))), Math.toRadians(0))
-                .splineTo(new Vector2d(15.26, 12.08), Math.toRadians(25))
+                .splineTo(new Vector2d(15.26, 12.08), Math.toRadians(30))
                 .splineTo(new Vector2d(47, 35), Math.toRadians(0))
                 .build();
     }
@@ -175,7 +175,7 @@ public class AzulBuenos {
     }
     public Trajectory azulIzqB7(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(53, 35, Math.toRadians(0))), Math.toRadians(0))
-                .lineToLinearHeading(new Pose2d(48, 35, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(47, 35, Math.toRadians(0)))
                 .build();
     }
 

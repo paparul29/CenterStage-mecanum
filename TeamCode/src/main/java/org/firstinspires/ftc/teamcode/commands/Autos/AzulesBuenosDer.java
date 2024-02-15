@@ -40,9 +40,8 @@ public class AzulesBuenosDer extends SequentialCommandGroup {
                 new InstantCommand(pixelHolder::pixel2Soltar),
                 new WaitCommand(300),
                 new TrajectoryFollowerCommand(drive, azulBuenos.azulDerB2ymedio(drive.getDrive())),
-                new WaitCommand(320),
+                new InstantCommand(pixelHolder::elevator),
                 new ParallelCommandGroup(
-                        new InstantCommand(pixelHolder::elevator),
                         new InstantCommand(intake::trans),
                         new ElevadorGoToPosition(elevator,0),
                         new TrajectoryFollowerCommand(drive, azulBuenos.azulDerB3(drive.getDrive()))
@@ -81,7 +80,8 @@ public class AzulesBuenosDer extends SequentialCommandGroup {
                 new WaitCommand(250),
                 new InstantCommand(pixelHolder::pixel1Soltar),
                 new InstantCommand(pixelHolder::pixel2Soltar),
-                new WaitCommand(320),
+                new WaitCommand(220),
+                new InstantCommand(pixelHolder::elevator),
 
                 new ParallelCommandGroup(
                         new TrajectoryFollowerCommand(drive, azulBuenos.azulDerB7(drive.getDrive())),

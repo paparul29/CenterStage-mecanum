@@ -8,6 +8,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.commands.Autos.AzulDer;
+import org.firstinspires.ftc.teamcode.commands.Autos.BuenosRojosDer;
+import org.firstinspires.ftc.teamcode.commands.Autos.BuenosRojosIzq;
+import org.firstinspires.ftc.teamcode.commands.Autos.BuenosRojosMid;
 import org.firstinspires.ftc.teamcode.commands.Autos.RojoDer;
 import org.firstinspires.ftc.teamcode.commands.Autos.RojoIzq;
 import org.firstinspires.ftc.teamcode.commands.Autos.RojoMid;
@@ -65,14 +68,17 @@ public class VisionRojaCortos extends CommandOpMode {
             if (getDistance(width) < 100) {
                 if (cX < 400 && cX > 1) {
                     telemetry.addData("Posicion", "A la izquierda");
-                } else if (cX > 400 && cX < 643) {
+                    CommandScheduler.getInstance().schedule(new BuenosRojosIzq(drive,elevator,intake,pixelHolder));
+                }
+                else if (cX > 400 && cX < 643) {
                     telemetry.addData("Posicion", "En medio");
+                    CommandScheduler.getInstance().schedule(new BuenosRojosMid(drive,elevator,intake,pixelHolder));
                 }
                 }
                 else{
                     telemetry.addData("Posicion", "Lado derecho");
-
-                }
+                CommandScheduler.getInstance().schedule(new BuenosRojosDer(drive,elevator,intake,pixelHolder));
+            }
             telemetry.update();
         }
         telemetry.update();
@@ -84,12 +90,13 @@ public class VisionRojaCortos extends CommandOpMode {
         telemetry.addData("Distance in Inch", (getDistance(width)));
         telemetry.update();
 
-        if(cX < 260) {
-                CommandScheduler.getInstance().schedule(new RojoDer(drive, elevator, intake, pixelHolder));
-            }else if(cX > 260 && cX < 643)  {
-                CommandScheduler.getInstance().schedule(new RojoMid(drive, elevator, intake, pixelHolder));
+        if(cX < 400 && cX >1) {
+                CommandScheduler.getInstance().schedule(new BuenosRojosIzq(drive, elevator, intake, pixelHolder));
+            }
+        else if(cX > 400 && cX < 643)  {
+                CommandScheduler.getInstance().schedule(new BuenosRojosMid(drive, elevator, intake, pixelHolder));
             }else {
-                CommandScheduler.getInstance().schedule(new RojoIzq(drive, elevator, intake, pixelHolder));
+                CommandScheduler.getInstance().schedule(new BuenosRojosDer(drive, elevator, intake, pixelHolder));
 
             }
 

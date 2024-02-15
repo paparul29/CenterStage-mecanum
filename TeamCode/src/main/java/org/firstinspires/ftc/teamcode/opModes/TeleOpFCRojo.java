@@ -68,7 +68,7 @@ public class TeleOpFCRojo extends CommandOpMode {
         new GamepadButton(new GamepadEx(gamepad2), GamepadKeys.Button.RIGHT_BUMPER)
                 .whenPressed(()-> elevator.setPosition(1,2100));
 
-        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder, intake));
+        elevator.setDefaultCommand(new ElevadorDefault(elevator, gamepadC, pixelHolder,intake));
         escalador.setDefaultCommand(new EscaladorDefault(escalador, gamepadDriver));
 
 

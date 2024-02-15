@@ -35,7 +35,7 @@ public class BuenosRojosMid extends SequentialCommandGroup {
                 ),
                 new InstantCommand(pixelHolder::leave),
                 new WaitCommand(350),
-                new ElevadorGoToPosition(elevator,910),
+                new ElevadorGoToPosition(elevator,950),
                 new WaitCommand(230),
                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoMidB2(drive.getDrive())),
                 new WaitCommand(300),
@@ -45,14 +45,15 @@ public class BuenosRojosMid extends SequentialCommandGroup {
                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoMidB2ymedio(drive.getDrive())),
                 new ElevadorGoToPosition(elevator,1400),
                 new WaitCommand(300),
+
                 new ParallelCommandGroup(
                 new InstantCommand(pixelHolder::elevator),
                 new InstantCommand(intake::trans),
                 new ElevadorGoToPosition(elevator,0),
                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoMidB3(drive.getDrive()))
                         ),
-                new InstantCommand(intake::arriba),
                 new InstantCommand(pixelHolder::grab),
+                new InstantCommand(intake::arriba),
 
                 new ParallelCommandGroup(
                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoMidB4(drive.getDrive())),
@@ -77,12 +78,12 @@ public class BuenosRojosMid extends SequentialCommandGroup {
                 ),
                 new InstantCommand(pixelHolder::elevator),
                 new WaitCommand(250),
-                new ElevadorGoToPosition(elevator,1450),
+                new ElevadorGoToPosition(elevator,1550),
                 new WaitCommand(350),
                 new InstantCommand(pixelHolder::leave),
                 new WaitCommand(400),
                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoMidB6ymedio(drive.getDrive())),
-                new WaitCommand(250),
+                new WaitCommand(320),
                 new InstantCommand(pixelHolder::pixel1Soltar),
                 new InstantCommand(pixelHolder::pixel2Soltar),
                 new WaitCommand(350),

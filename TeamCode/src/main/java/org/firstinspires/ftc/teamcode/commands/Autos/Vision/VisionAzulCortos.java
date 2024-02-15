@@ -10,6 +10,9 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.commands.Autos.AzulDer;
 import org.firstinspires.ftc.teamcode.commands.Autos.AzulIzq;
 import org.firstinspires.ftc.teamcode.commands.Autos.AzulMid;
+import org.firstinspires.ftc.teamcode.commands.Autos.AzulesBuenosDer;
+import org.firstinspires.ftc.teamcode.commands.Autos.AzulesBuenosIzq;
+import org.firstinspires.ftc.teamcode.commands.Autos.AzulesBuenosMid;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.Elevator;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -58,21 +61,23 @@ public class VisionAzulCortos extends CommandOpMode {
         elevator = new Elevator(telemetry, hardwareMap);
         pixelHolder = new PixelHolder(hardwareMap, telemetry);
 
-        sleep(1000);
+        sleep(400);
 
         while(!isStarted()){
             telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
             if (getDistance(width) < 100) {
                 if (cX < 400 && cX > 1) {
                     telemetry.addLine("A la izquierda");
-                } else if (cX > 400 && cX < 650) {
+                    CommandScheduler.getInstance().schedule(new AzulesBuenosIzq(drive,elevator,intake,pixelHolder));
+                }
+                else if (cX > 400 && cX < 650) {
                     telemetry.addLine("En medio");
-                    CommandScheduler.getInstance().schedule(new AzulMid(drive, elevator, intake, pixelHolder));
+                    CommandScheduler.getInstance().schedule(new AzulesBuenosMid(drive, elevator, intake, pixelHolder));
                 }
             }
             else{
                     telemetry.addLine("Lado derecho");
-                    CommandScheduler.getInstance().schedule(new AzulIzq(drive, elevator, intake, pixelHolder));
+                    CommandScheduler.getInstance().schedule(new AzulesBuenosDer(drive, elevator, intake, pixelHolder));
                 }
 
             telemetry.update();
@@ -80,17 +85,16 @@ public class VisionAzulCortos extends CommandOpMode {
         telemetry.update();
 
         waitForStart();
-        sleep(1000);
         telemetry.addData("Coordinate", "(" + (int) cX + ", " + (int) cY + ")");
         telemetry.addData("Distance in Inch", (getDistance(width)));
         telemetry.update();
 
             if (cX < 400 && cX > 1) {
-                CommandScheduler.getInstance().schedule(new AzulDer(drive, elevator, intake, pixelHolder));
+                CommandScheduler.getInstance().schedule(new AzulesBuenosIzq(drive, elevator, intake, pixelHolder));
             }else if(cX > 400 && cX < 650) {
-                CommandScheduler.getInstance().schedule(new AzulMid(drive, elevator, intake, pixelHolder));
+                CommandScheduler.getInstance().schedule(new AzulesBuenosMid(drive, elevator, intake, pixelHolder));
             }else{
-                CommandScheduler.getInstance().schedule(new AzulIzq(drive, elevator, intake, pixelHolder));
+                CommandScheduler.getInstance().schedule(new AzulesBuenosDer(drive, elevator, intake, pixelHolder));
             }
 
 

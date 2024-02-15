@@ -55,7 +55,7 @@ public class Intake extends SubsystemBase {
 
     public void arriba(){topple.turnToAngle(68);}
 
-    public void trans(){topple.turnToAngle(118);}
+    public void trans(){topple.turnToAngle(100);}
 
     public void masAbajo(){
         topple.turnToAngle(142);

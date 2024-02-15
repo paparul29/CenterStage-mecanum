@@ -79,15 +79,15 @@ public class BuenosRojosDer extends SequentialCommandGroup {
                         ),
                         new InstantCommand(pixelHolder::elevator),
                         new WaitCommand(250),
-                        new ElevadorGoToPosition(elevator,1450),
+                        new ElevadorGoToPosition(elevator,1550),
                         new WaitCommand(350),
                         new InstantCommand(pixelHolder::leave),
                         new WaitCommand(400),
                         new TrajectoryFollowerCommand(drive, rojosBuenos.rojoDerB6ymedio(drive.getDrive())),
-                        new WaitCommand(250),
+                        new WaitCommand(270),
                         new InstantCommand(pixelHolder::pixel1Soltar),
                         new InstantCommand(pixelHolder::pixel2Soltar),
-                        new WaitCommand(320),
+                        new WaitCommand(370),
 
                         new ParallelCommandGroup(
                                 new TrajectoryFollowerCommand(drive, rojosBuenos.rojoDerB7(drive.getDrive())),
