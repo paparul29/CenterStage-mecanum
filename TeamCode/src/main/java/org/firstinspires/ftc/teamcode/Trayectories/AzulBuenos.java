@@ -154,11 +154,11 @@ public class AzulBuenos {
     }
     public Trajectory azulIzqB4(SampleMecanumDrive drive) {
         return drive.trajectoryBuilder((new Pose2d(41.96, 10, Math.toRadians(180))), Math.toRadians(180))
-                .lineToLinearHeading(new Pose2d(-59.3, 11, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(-59.3, 12, Math.toRadians(180)))
                 .build();
     }
     public Trajectory azulIzqB5(SampleMecanumDrive drive) {
-        return drive.trajectoryBuilder((new Pose2d(-59.3, 11, Math.toRadians(0))), Math.toRadians(0))
+        return drive.trajectoryBuilder((new Pose2d(-59.3, 12, Math.toRadians(0))), Math.toRadians(0))
                 .lineToLinearHeading(new Pose2d(-40.69, -2.38, Math.toRadians(0)))
                 .build();
     }

@@ -39,7 +39,7 @@ public class AzulesBuenosMid extends SequentialCommandGroup {
                 new ElevadorGoToPosition(elevator,910),
                 new WaitCommand(230),
                 new TrajectoryFollowerCommand(drive, azulBuenos.azulMidB2(drive.getDrive())),
-                new WaitCommand(340),
+                new WaitCommand(300),
                 new InstantCommand(pixelHolder::pixel1Soltar),
                 new InstantCommand(pixelHolder::pixel2Soltar),
                 new WaitCommand(200),
@@ -66,7 +66,7 @@ public class AzulesBuenosMid extends SequentialCommandGroup {
                 ),
                 new InstantCommand(intake::abajo),
                 new IntakeCommand(intake,-1),
-                new WaitCommand(300),
+                new WaitCommand(200),
                 new InstantCommand(intake::masAbajo),
                 new IntakeCommand(intake,-1),
 
